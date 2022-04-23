@@ -15,13 +15,12 @@ app.use(express.json());
 //ROUTES
 app.get("/products", (req, res) => {
   UpdatedProduct.find({ id: { $lte: 1000 } }).select('-styles -features')
-  //not sure why its taking so long, I indexed the product id on each document - it took like 40 secs
   .then(allProducts => {
-    console.log('🥳🥳🥳🥳🥳 here are your products --->', Object.keys(allProducts))
+    console.log('here are your products --->', Object.keys(allProducts))
     res.status(200).send(allProducts);
   })
   .catch(err => {
-    console.log('🤬🤬🤬🤬🤬 err getting products --->', err)
+    console.log('err getting products --->', err)
     res.status(404).end;
   })
 })
@@ -30,11 +29,11 @@ app.get("/products", (req, res) => {
 app.get("/products/:product_id", (req, res) => {
   UpdatedProduct.findOne({ id: Number(req.params.product_id) }).select('-styles -skus')
     .then(product => {
-      console.log('🥳🥳🥳🥳🥳 here is your product --->', product)
+      console.log('here is your product --->', product)
       res.status(200).send(product);
     })
     .catch(err => {
-      console.log('🤬🤬🤬🤬🤬 err getting products --->', err)
+      console.log('err getting products --->', err)
       res.status(404).end;
     })
 })

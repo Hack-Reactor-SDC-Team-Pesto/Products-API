@@ -35,7 +35,7 @@ const Results = new mongoose.Schema({
   style_id: Number,
   name: String,
   original_price: Number,
-  sale_price: Number
+  sale_price: Numbermo
   // 'default?': Boolean,
   // photos: [Photos],
   // skus:
