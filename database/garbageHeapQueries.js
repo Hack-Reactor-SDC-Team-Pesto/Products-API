@@ -1,5 +1,3 @@
-
-
 //Returns the all styles available for the given product.
 // app.get("/products/:product_id/styles", (req, res) => {
 //   const targetResult = {

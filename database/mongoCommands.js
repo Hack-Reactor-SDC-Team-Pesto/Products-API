@@ -46,7 +46,7 @@ function indexAndAggregateSkusToStyles() {
     }}, {
     $out: "samplestyles" }])
 
-//real aggregation
+// aggregation
   db.styles.aggregate([{
     $lookup: {
       from: "skus",
@@ -55,13 +55,10 @@ function indexAndAggregateSkusToStyles() {
       as: "skus"
     }}, {
     $out: "styles" }])
-//WHOOPS started this without indexing, gotta go do that
 
 //index style id
   db.styles.createIndex({ "id": 1 }, {"unique": false})
   db.skus.createIndex({ "styleId": 1 }, {"unique": false})
-
-  //I DID NOT DELETE MY COLLECTIONS YET SO I DID NOT HAVE TO DO THIS STEP AGAIN FOR TAKE 2
 
 }
 
@@ -76,7 +73,7 @@ function indexAndAggregateStylesToProducts() {
       }}, {
       $out: "sampleproducts" }])
 
-  //real aggregation
+  // aggregation
     db.products.aggregate([{
       $lookup: {
         from: "styles",
@@ -94,7 +91,7 @@ function indexAndAggregateStylesToProducts() {
 }
 
 function indexAndAggregateRelatedToProducts() {
-    //real aggregation
+    // aggregation
       db.products.aggregate([{
         $lookup: {
           from: "related",
@@ -113,7 +110,7 @@ function indexAndAggregateRelatedToProducts() {
 
 
 function removeProductIdField() {
-  //real aggregation
+  // aggregation
     db.products.updateMany(
       {},
       { $unset: { related.current_product_id: "" }}
