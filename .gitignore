@@ -1,5 +1,6 @@
 node_modules
 config.js
+csv_files
 
 # Logs
 logs

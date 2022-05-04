@@ -102,9 +102,9 @@
   QUERY => for any product with the id X place related_product_id into an array located in product collection under same product id
 
   I'd like to write a pipeline here here that grabs all instances of the needed 'current_product_id' and makes an array from those objects' 'related_product_id's.
-  */
-})
 
+})
+*/
 
 
 
